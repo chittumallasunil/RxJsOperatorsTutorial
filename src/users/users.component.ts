@@ -11,6 +11,7 @@ import { JsonPipe, NgFor } from '@angular/common';
 })
 export class UsersComponent {
   users: User[] = []
+  filteredUsers: any;
 
   constructor(private usersService: UsersService){}
 
@@ -18,6 +19,10 @@ export class UsersComponent {
     this.usersService.getUsers().subscribe(res=>{
       this.users = res;
     });
+
+    this.usersService.getFilteredUser().subscribe(res=>{
+      this.filteredUsers = res;
+    })
   }
 
 }
